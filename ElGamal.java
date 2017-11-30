@@ -1,3 +1,8 @@
+/*
+*Cryptograpy Project 1
+*Sean Donnelly, Teresa Melgarejo, Golda Meir Chiong
+*/
+
 public class ElGamal {
   /**
    * Solving the discrete log problem (using brute force)
