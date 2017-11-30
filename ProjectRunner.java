@@ -1,14 +1,19 @@
 import java.util.HashMap;
 
 public class ProjectRunner {
-  HashMap<int,int> ciphertext = new HashMap<int,int>();
-  
+  static HashMap<Integer,Integer> ciphertext = new HashMap<Integer,Integer>();
+
   public static void main(String arg[]){
     setCipertext();
-
+    int p = 31847;
+    int alpha = 5;
+    int beta = 18074;
+    // Brute force the discrete log problem for p
+    //int a = ElGamal.solveDiscreteLog(p, alpha, beta);
+    ElGamal.computeSubvalues(3,700,53);
   }
 
-  public void setCipertext() {
+  public static void setCipertext() {
     ciphertext.put(3781, 14409);   ciphertext.put(31552, 3930);   ciphertext.put(27214, 15442);  ciphertext.put(5809, 30274);    
     ciphertext.put(5400, 31486);   ciphertext.put(19936, 721);    ciphertext.put(27765, 29284);  ciphertext.put(29820, 7710);    
     ciphertext.put(31590, 26470);  ciphertext.put(3781, 14409);   ciphertext.put(15898, 30844);  ciphertext.put(19048, 12914);   
