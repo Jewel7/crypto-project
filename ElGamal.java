@@ -47,6 +47,18 @@ public class ElGamal {
       powerOfTwo =(int) Math.pow(2, k);
     } while(powerOfTwo <= exponent);
   }
+  ////Jewel
+  public class power{
+    public static int modpow(int value , int power, int mod){
+      int e = 1;
+     
+      for (int i = 0; i < power; i++) {
+           e = ((e * value) % mod);
+              
+      }
+          
+          return e;
+  }
 
   /**
    * Converting from numbers back to text (Note: You need to invert the above procedure which converts from text to numbers).
