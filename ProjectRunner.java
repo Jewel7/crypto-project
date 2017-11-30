@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
 public class ProjectRunner {
-  HashMap<int,int> ciphertext = new HashMap<int,int>();
-  
+  HashMap<Integer,Integer> ciphertext = new HashMap<Integer,Integer>();
+    
   public static void main(String arg[]){
     setCipertext();
 
