@@ -24,35 +24,28 @@ public class ElGamal {
   /**
    * Computing the multiplicative inverse in modular arithmetic using the extended Euclidean algorithm
    */
-static int[] gcd(int x, int mod)//checks if an inverse is possible 
-   {
-        if (mod == 0)
-           return new int[] { x, 1, 0 };
-        
-        int[] values = gcd(mod, x % mod);
-        int d = values[0];
-        int a = values[2];
-        int b = values[1] - (x / mod) * values[2];
-        return new int[] { d, a, b };
+static long EEAlg_Inverse(long base, long mod)//pass in the base and the modulus to find the modular inverse
+    {
+        long x = 0, y = 1, lastX = 1, lastY = 0, temp; //declaring values
+
+        while (mod != 0)//insures no division by zero
+        {
+            long quotient = base / mod;//quotient
+            long remainder = base % mod;//remainder
+
+            base = mod;
+            mod = remainder;
+
+            temp = x;
+            x = lastX - quotient * x;
+            lastX = temp;
+
+            temp = y;
+            y = lastY - quotient * y;
+            lastY = temp;            
+        }
+        return lastX;//returns the extended Euclid Alg Inverse
     }
-   static int extendEuclid(int x, int mod)//computes inverse, if there is one
-   {
-      int[] values = gcd(x, mod);
-      
-      int d = values[0];
-      int a = values[1];
-      int b = values[2];
-      
-      if (d > 1) 
-      { 
-        System.out.println("No inverse found!"); 
-        return 0; 
-      }
-      if (a > 0) 
-          return a;
-      
-      return mod + a;
-   }
   
   /**
    * Modular exponentiation using the repeated squaring method
