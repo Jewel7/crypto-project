@@ -25,29 +25,31 @@ public class ElGamal {
   /**
    * Computing the multiplicative inverse in modular arithmetic using the extended Euclidean algorithm
    */
-  static long EEAlg_Inverse(long base, long mod)//pass in the base and the modulus to find the modular inverse
-  {
-    long x = 0, y = 1, lastX = 1, lastY = 0, temp; //declaring values
-
-    while (mod != 0)//insures no division by zero
+static int EEAlg_Inverse(int base, int mod, int a, int p)//pass in the base and the modulus to find the modular inverse
     {
-      long quotient = base / mod;//quotient
-      long remainder = base % mod;//remainder
+        int x = 0, y = 1, lastX = 1, lastY = 0, temp; //declaring values
 
-      base = mod;
-      mod = remainder;
+        while (mod != 0)//insures no division by zero
+        {
+            int quotient = base / mod;//quotient
+            int remainder = base % mod;//remainder
 
-      temp = x;
-      x = lastX - quotient * x;
-      lastX = temp;
+            base = mod;
+            mod = remainder;
 
-      temp = y;
-      y = lastY - quotient * y;
-      lastY = temp;            
+            temp = x;
+            x = lastX - quotient * x;
+            lastX = temp;
+
+            temp = y;
+            y = lastY - quotient * y;
+            lastY = temp;            
+        }
+        
+        return modularExponentiation(lastX,a, p);//returns the extended Euclid Alg Inverse
+        
     }
   
-    return lastX;//returns the extended Euclid Alg Inverse
-  }
   
   /**
    * Modular exponentiation using the repeated squaring method
