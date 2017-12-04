@@ -22,8 +22,9 @@ public class ElGamal {
     throw new Error("No a value found!");
   }
   
-  /**
+ /**
    * Computing the multiplicative inverse in modular arithmetic using the extended Euclidean algorithm
+   * @return the extended Euclid Alg Inverse
    */
 static int EEAlg_Inverse(int base, int mod, int a, int p)//pass in the base and the modulus to find the modular inverse
     {
