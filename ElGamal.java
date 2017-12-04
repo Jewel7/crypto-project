@@ -16,7 +16,7 @@ public class ElGamal {
     if (p > 100000) throw new Error("the p value is too large to brute force!");
 
     for (Integer a = 0; a < p - 1; a++) {
-      if (beta == modpow(alpha, a, p)) return a;
+      if (beta == modularExponentiation(alpha, a, p)) return a;
     }
 
     throw new Error("No a value found!");
@@ -50,8 +50,13 @@ static long EEAlg_Inverse(long base, long mod)//pass in the base and the modulus
   /**
    * Modular exponentiation using the repeated squaring method
    */
-  static int modularExponentiation(int value, int exponent, int modulo) {
-    return 1;
+  public static int modularExponentiation(int value, int power, int mod){
+    int e = 1;
+    for (int i = 0; i < power; i++) {
+      e = ((e * value) % mod);
+    }
+    
+    return e;
   }
 
   static void computeSubvalues(int value, int exponent, int modulo) {
@@ -68,17 +73,6 @@ static long EEAlg_Inverse(long base, long mod)//pass in the base and the modulus
       k++;
       powerOfTwo =(int) Math.pow(2, k);
     } while(powerOfTwo <= exponent);
-  }
-  ////Jewel
-    public static int modpow(int value , int power, int mod){
-      int e = 1;
-     
-      for (int i = 0; i < power; i++) {
-           e = ((e * value) % mod);
-              
-      }
-          
-          return e;
   }
 
   /**
