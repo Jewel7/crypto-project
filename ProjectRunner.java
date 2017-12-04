@@ -8,6 +8,11 @@ public class ProjectRunner {
     int p = 31847;
     int alpha = 5;
     int beta = 18074;
+
+    System.out.println("p = 31,847");
+    System.out.println("alpha = 5");
+    System.out.println("beta = 18,074");
+    
     // Brute force the discrete log problem for p
     int a = ElGamal.solveDiscreteLog(p, alpha, beta);
     System.out.println(a);
