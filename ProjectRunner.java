@@ -9,8 +9,8 @@ public class ProjectRunner {
     int alpha = 5;
     int beta = 18074;
     // Brute force the discrete log problem for p
-    //int a = ElGamal.solveDiscreteLog(p, alpha, beta);
-    ElGamal.computeSubvalues(3,700,53);
+    int a = ElGamal.solveDiscreteLog(p, alpha, beta);
+    System.out.println(a);
   }
 
   public static void setCipertext() {

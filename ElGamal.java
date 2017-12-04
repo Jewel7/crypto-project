@@ -16,7 +16,7 @@ public class ElGamal {
     if (p > 100000) throw new Error("the p value is too large to brute force!");
 
     for (Integer a = 0; a < p - 1; a++) {
-      if (beta == (Math.pow(alpha, a) % p)) return a;
+      if (beta == modpow(alpha, a, p)) return a;
     }
 
     throw new Error("No a value found!");
@@ -48,7 +48,6 @@ public class ElGamal {
     } while(powerOfTwo <= exponent);
   }
   ////Jewel
-  public class power{
     public static int modpow(int value , int power, int mod){
       int e = 1;
      
