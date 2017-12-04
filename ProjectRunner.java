@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
 
 public class ProjectRunner {
   static HashMap<Integer,Integer> ciphertext = new HashMap<Integer,Integer>();
@@ -11,6 +13,12 @@ public class ProjectRunner {
     // Brute force the discrete log problem for p
     int a = ElGamal.solveDiscreteLog(p, alpha, beta);
     System.out.println(a);
+    Iterator it = ciphertext.entrySet().iterator();
+    while (it.hasNext()) {
+        Map.Entry pair = (Map.Entry)it.next();
+        System.out.println(pair.getKey() + ", " + pair.getValue());
+        it.remove(); // avoids a ConcurrentModificationException
+    }
   }
 
   public static void setCipertext() {
