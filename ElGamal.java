@@ -61,22 +61,6 @@ public class ElGamal {
     return e;
   }
 
-  static void computeSubvalues(int value, int exponent, int modulo) {
-    HashMap<Integer, Integer> subvalues = new HashMap<Integer, Integer>();
-    
-    int k = 0;
-    int powerOfTwo = 1;
-
-    do {
-      double d = Math.pow(value, powerOfTwo);
-      System.out.println((int) d);
-      long v = ((long) d) % modulo;
-      System.out.println(powerOfTwo + " | " + v);
-      k++;
-      powerOfTwo =(int) Math.pow(2, k);
-    } while(powerOfTwo <= exponent);
-  }
-
   /**
    * Converting from numbers back to text (Note: You need to invert the above procedure which converts from text to numbers).
    */
