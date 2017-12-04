@@ -17,11 +17,18 @@ public class ProjectRunner {
     
     // Brute force the discrete log problem for p
     int a = ElGamal.solveDiscreteLog(p, alpha, beta);
-    System.out.println(a);
+    System.out.println("a = " + a);
+
+    // Compute r to the -a power
     Iterator it = ciphertext.entrySet().iterator();
     while (it.hasNext()) {
-        Map.Entry pair = (Map.Entry)it.next();
-        System.out.println(pair.getKey() + ", " + pair.getValue());
+        Map.Entry<Integer, Integer> pair = (Map.Entry)it.next();
+        int rToNegativeA = ElGamal.EEAlg_Inverse(pair.getKey(), a, p);
+
+        int m = pair.getValue() * rToNegativeA;
+
+        System.out.print(ElGamal.numbersToText(m));
+        // System.out.println(pair.getKey() + ", " + pair.getValue());
         it.remove(); // avoids a ConcurrentModificationException
     }
   }

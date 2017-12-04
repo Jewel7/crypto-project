@@ -25,17 +25,17 @@ public class ElGamal {
   /**
    * Computing the multiplicative inverse in modular arithmetic using the extended Euclidean algorithm
    */
-static int EEAlg_Inverse(int base, int mod, int a, int p)//pass in the base and the modulus to find the modular inverse
+static int EEAlg_Inverse(int base, int a, int p)//pass in the base and the modulus to find the modular inverse
     {
         int x = 0, y = 1, lastX = 1, lastY = 0, temp; //declaring values
 
-        while (mod != 0)//insures no division by zero
+        while (p != 0)//insures no division by zero
         {
-            int quotient = base / mod;//quotient
-            int remainder = base % mod;//remainder
+            int quotient = base / p;//quotient
+            int remainder = base % p;//remainder
 
-            base = mod;
-            mod = remainder;
+            base = p;
+            p = remainder;
 
             temp = x;
             x = lastX - quotient * x;
@@ -56,6 +56,7 @@ static int EEAlg_Inverse(int base, int mod, int a, int p)//pass in the base and 
    */
   public static int modularExponentiation(int value, int power, int mod){
     int e = 1;
+    // System.out.println(value + ", " + power + ", " + mod);
     for (int i = 0; i < power; i++) {
       e = ((e * value) % mod);
     }
