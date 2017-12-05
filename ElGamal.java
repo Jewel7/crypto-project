@@ -29,14 +29,18 @@ public class ElGamal {
 static int EEAlg_Inverse(int base, int a, int p)//pass in the base and the modulus to find the modular inverse
     {
         int x = 0, y = 1, lastX = 1, lastY = 0, temp; //declaring values
-
-        while (p != 0)//insures no division by zero
+        boolean flag = false;
+        do//insures no division by zero
         {
             int quotient = base / p;//quotient
             int remainder = base % p;//remainder
 
             base = p;
-            p = remainder;
+            
+            if(remainder == 0)
+                flag = true;
+            else
+                p = remainder;
 
             temp = x;
             x = lastX - quotient * x;
@@ -45,11 +49,12 @@ static int EEAlg_Inverse(int base, int a, int p)//pass in the base and the modul
             temp = y;
             y = lastY - quotient * y;
             lastY = temp;            
-        }
-        
+        } while (flag != true);
+  
         return modularExponentiation(lastX,a, p);//returns the extended Euclid Alg Inverse
         
     }
+  
   
   
   /**
