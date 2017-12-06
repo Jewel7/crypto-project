@@ -62,8 +62,9 @@ static int EEAlg_Inverse(int base, int mod)//pass in the base and the modulus to
     for (int i = 0; i < power; i++) {
       e = ((e * value) % mod);
     }
-    
-    return e;
+    if(e <0)
+            return mod + e; // mods a negative number
+    return e; //if positive, return result
   }
 
   /**

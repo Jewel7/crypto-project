@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Iterator;
 
 public class ProjectRunner {
+  //Linked Hash Map preserves the insertion order of the data
   static LinkedHashMap<Integer,Integer> ciphertext = new LinkedHashMap<Integer,Integer>();
 
   public static void main(String arg[]){
@@ -18,7 +19,7 @@ public class ProjectRunner {
     
     // Brute force the discrete log problem for p
     int a = ElGamal.solveDiscreteLog(p, alpha, beta);
-    System.out.println("a = " + a);
+    System.out.println("a = " + a +"\n");
 
     // Compute r to the -a power
     Iterator it = ciphertext.entrySet().iterator();
@@ -36,7 +37,7 @@ public class ProjectRunner {
   }
 
   public static void setCipertext() {
-    ciphertext.put(3781, 14409);   ciphertext.put(31552, 3930);   ciphertext.put(27214, 15442);  ciphertext.put(5809, 30274);    
+    ciphertext.put(3781, 14409);   ciphertext.put(31552, 3930);  ciphertext.put(27214, 15442);  ciphertext.put(5809, 30274);    
     ciphertext.put(5400, 31486);   ciphertext.put(19936, 721);    ciphertext.put(27765, 29284);  ciphertext.put(29820, 7710);    
     ciphertext.put(31590, 26470);  ciphertext.put(3781, 14409);   ciphertext.put(15898, 30844);  ciphertext.put(19048, 12914);   
     ciphertext.put(16160, 3129);   ciphertext.put(301, 17252);    ciphertext.put(24689, 7776);   ciphertext.put(28856, 15720);   
