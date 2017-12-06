@@ -1,9 +1,10 @@
+import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
 public class ProjectRunner {
-  static HashMap<Integer,Integer> ciphertext = new HashMap<Integer,Integer>();
+  static LinkedHashMap<Integer,Integer> ciphertext = new LinkedHashMap<Integer,Integer>();
 
   public static void main(String arg[]){
     setCipertext();
@@ -23,12 +24,13 @@ public class ProjectRunner {
     Iterator it = ciphertext.entrySet().iterator();
     while (it.hasNext()) {
         Map.Entry<Integer, Integer> pair = (Map.Entry)it.next();
-        int rToNegativeA = ElGamal.EEAlg_Inverse(pair.getKey(), a, p);
-
-        int m = pair.getValue() * rToNegativeA;
-
+        int inverse = ElGamal.EEAlg_Inverse(pair.getKey(), p);
+        int rToNegativeA = ElGamal.modularExponentiation(inverse, a, p);
+        int m = (pair.getValue() * rToNegativeA) % p;
+        
         System.out.print(ElGamal.numbersToText(m));
-        // System.out.println(pair.getKey() + ", " + pair.getValue());
+        
+        //System.out.println(pair.getKey() + ", " + pair.getValue());
         it.remove(); // avoids a ConcurrentModificationException
     }
   }
